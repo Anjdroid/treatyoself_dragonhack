@@ -1,5 +1,6 @@
 package self.yo.treat.treatyoself;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,13 +40,16 @@ public class QR_Scanner extends AppCompatActivity implements ZXingScannerView.Re
     @Override
     public void handleResult(Result rawResult) {
         // Do something with the result here
-        Toast.makeText(this, "Contents = " + rawResult.getText() +
-                ", Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Contents = " + rawResult.getText() +
+               // ", Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
 
-        Log.v(TAG, rawResult.getText()); // Prints scan results
-        Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
+        //Log.v(TAG, rawResult.getText()); // Prints scan results
+        //Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
 
         // If you would like to resume scanning, call this method below:
-        mScannerView.resumeCameraPreview(this);
+        //mScannerView.resumeCameraPreview(this);
+
+        Intent intent = new Intent(QR_Scanner.this, Name.class);
+        startActivity(intent);
     }
 }

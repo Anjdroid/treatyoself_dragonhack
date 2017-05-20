@@ -10,4 +10,116 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="self.yo.treat.treatyoself.Edit">
 
+    <TextView
+        android:text="EDIT EXPENSE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:id="@+id/title3"
+        android:textColor="@color/colorAccent"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:fontFamily="casual"
+        android:textStyle="bold" />
+
+    <TextView
+        android:text="Expense title:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lala3"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/title3"
+        android:layout_alignLeft="@+id/title3"
+        android:layout_alignStart="@+id/title3" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/editText3"
+        android:text="COFFEE"
+        android:fontFamily="casual"
+        android:textSize="25sp"
+        android:width="100sp"
+        android:layout_below="@+id/title3"
+        android:layout_alignRight="@+id/title3"
+        android:layout_alignEnd="@+id/title3" />
+
+    <TextView
+        android:text="Amount (€):"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lala4"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_below="@+id/editText3"
+        android:layout_alignLeft="@+id/lala3"
+        android:layout_alignStart="@+id/lala3" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText4"
+        android:text="1.5"
+        android:fontFamily="casual"
+        android:textSize="25sp"
+        android:width="100sp"
+        android:layout_alignBaseline="@+id/lala4"
+        android:layout_alignBottom="@+id/lala4"
+        android:layout_alignLeft="@+id/editText3"
+        android:layout_alignStart="@+id/editText3" />
+
+    <TextView
+        android:text="Category:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lala5"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_below="@+id/editText4"
+        android:layout_alignLeft="@+id/lala4"
+        android:layout_alignStart="@+id/lala4" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_height="35dp"
+        android:layout_below="@+id/editText4"
+        android:layout_alignLeft="@+id/editText4"
+        android:layout_alignStart="@+id/editText4"
+        android:layout_width="110dp"
+        android:fontFamily="casual"/>
+
+    <Button
+        android:id="@+id/save33"
+        android:textStyle="bold"
+        android:text="SAVE"
+        android:textColor="#FF5E95"
+        android:textSize="20sp"
+
+        android:background="@drawable/button_title"
+        android:layout_marginTop="99dp"
+        android:layout_below="@+id/spinner"
+        android:layout_toRightOf="@+id/lala5"
+        android:layout_toEndOf="@+id/lala5"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
 </RelativeLayout>

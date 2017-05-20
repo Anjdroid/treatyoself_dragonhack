@@ -6,18 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Settings extends AppCompatActivity {
+public class Name extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_name);
 
         //save button
-        Button addButton = (Button) findViewById(R.id.save_set);
+        Button addButton = (Button) findViewById(R.id.save_qr);
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Settings.this, Spending.class);
+                Intent intent = new Intent(Name.this, Spending.class);
                 startActivity(intent);
             }
         });

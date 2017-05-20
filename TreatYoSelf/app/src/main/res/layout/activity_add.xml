@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="self.yo.treat.treatyoself.Add">
+
+    <TextView
+        android:text="ADD EXPENSE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:id="@+id/title32"
+        android:textColor="@color/colorAccent"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:fontFamily="casual"
+        android:textStyle="bold" />
+
+    <TextView
+        android:text="Expense title:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lala32"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/title32"
+        android:layout_alignLeft="@+id/title32"
+        android:layout_alignStart="@+id/title32" />
+
+    <TextView
+        android:text="Amount (€):"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lala42"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_below="@+id/editText32"
+        android:layout_alignLeft="@+id/lala32"
+        android:layout_alignStart="@+id/lala32" />
+
+    <TextView
+        android:text="Category:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lala52"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_below="@+id/editText42"
+        android:layout_alignLeft="@+id/lala42"
+        android:layout_alignStart="@+id/lala42" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_height="35dp"
+        android:layout_below="@+id/editText42"
+        android:layout_alignLeft="@+id/editText42"
+        android:layout_alignStart="@+id/editText42"
+        android:layout_width="110dp"
+        android:fontFamily="casual"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/editText32"
+        android:fontFamily="casual"
+        android:textSize="25sp"
+        android:width="100sp"
+        android:layout_below="@+id/title32"
+        android:layout_alignRight="@+id/title32"
+        android:layout_alignEnd="@+id/title32"
+        android:hint="coffee" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText42"
+        android:fontFamily="casual"
+        android:textSize="25sp"
+        android:width="100sp"
+        android:layout_alignBaseline="@+id/lala42"
+        android:layout_alignBottom="@+id/lala42"
+        android:layout_alignLeft="@+id/editText32"
+        android:layout_alignStart="@+id/editText32"
+        android:hint="1" />
+
+    <TextView
+        android:text="Paid by:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lala62"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_below="@+id/spinner2"
+        android:layout_alignLeft="@+id/lala52"
+        android:layout_alignStart="@+id/lala52"
+        android:layout_marginTop="14dp" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_height="35dp"
+        android:layout_width="110dp"
+        android:fontFamily="casual"
+        android:layout_alignTop="@+id/lala62"
+        android:layout_alignLeft="@+id/spinner2"
+        android:layout_alignStart="@+id/spinner2" />
+
+    <TextView
+        android:text="Date:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lala72"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_below="@+id/spinner3"
+        android:layout_alignLeft="@+id/lala62"
+        android:layout_alignStart="@+id/lala62"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/save2"
+        android:textStyle="bold"
+        android:text="SAVE"
+        android:textColor="#FF5E95"
+        android:textSize="20sp"
+
+        android:background="@drawable/button_title"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/lala52"
+        android:layout_toEndOf="@+id/lala52"
+        android:layout_marginBottom="27dp" />
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/datePicker"
+        style="@android:style/Widget.DatePicker"
+        android:layout_alignTop="@+id/lala72"
+        android:layout_alignLeft="@+id/save2"
+        android:layout_alignStart="@+id/save2" />
+
+</RelativeLayout>
