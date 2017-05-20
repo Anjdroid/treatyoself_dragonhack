@@ -21,7 +21,9 @@
         <activity android:name=".QR_Scanner" />
         <activity android:name=".Spending" />
         <activity android:name=".Edit" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".Add" />
+        <activity android:name=".Name"></activity>
     </application>
 
 </manifest>
