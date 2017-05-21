@@ -69,21 +69,6 @@
         android:layout_alignLeft="@+id/lala3"
         android:layout_alignStart="@+id/lala3" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText4"
-        android:text="1.5"
-        android:fontFamily="casual"
-        android:textSize="25sp"
-        android:width="100sp"
-        android:layout_alignBaseline="@+id/lala4"
-        android:layout_alignBottom="@+id/lala4"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignStart="@+id/editText3" />
-
     <TextView
         android:text="Category:"
         android:layout_width="wrap_content"
@@ -121,5 +106,20 @@
         android:layout_toEndOf="@+id/lala5"
         android:layout_width="60dp"
         android:layout_height="60dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/editText4"
+        android:text="1.5"
+        android:fontFamily="casual"
+        android:textSize="25sp"
+        android:width="100sp"
+        android:layout_alignBaseline="@+id/lala4"
+        android:layout_alignBottom="@+id/lala4"
+        android:layout_alignLeft="@+id/editText3"
+        android:layout_alignStart="@+id/editText3" />
 
 </RelativeLayout>

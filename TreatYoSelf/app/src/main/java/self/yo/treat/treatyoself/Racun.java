@@ -48,7 +48,7 @@ public class Racun {
         this.izdajatelj = izdajatelj;
     }
 
-    public void setDatumm(String datum) {
+    public void setDatum(String datum) {
         this.datum = datum;
     }
 

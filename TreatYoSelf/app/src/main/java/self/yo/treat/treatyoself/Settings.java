@@ -15,6 +15,11 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         db = new DBHelper(getApplicationContext());
+        Prihranek p1 = db.getPrihranek(1);
+        EditText et = (EditText) findViewById(R.id.editText1);
+        et.setText(String.valueOf(p1.getDenar()));
+        EditText et2 = (EditText) findViewById(R.id.editText2);
+        et2.setText(String.valueOf(p1.getPrihranek()));
 
         //save button
         Button addButton = (Button) findViewById(R.id.save_set);

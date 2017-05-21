@@ -25,20 +25,6 @@
         android:layout_alignLeft="@+id/lala"
         android:layout_alignStart="@+id/lala" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText1"
-        android:text="0.1"
-        android:fontFamily="casual"
-        android:textSize="25sp"
-        android:width="100sp"
-        android:layout_below="@+id/lala"
-        android:layout_alignLeft="@+id/lala"
-        android:layout_alignStart="@+id/lala" />
-
     <TextView
         android:text="€"
         android:layout_width="wrap_content"
@@ -74,7 +60,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="text"
         android:ems="10"
         android:id="@+id/editText2"
         android:text="1"
@@ -129,5 +115,19 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/editText1"
+        android:text="0.1"
+        android:fontFamily="casual"
+        android:textSize="25sp"
+        android:width="100sp"
+        android:layout_below="@+id/lala"
+        android:layout_alignLeft="@+id/lala"
+        android:layout_alignStart="@+id/lala" />
 
 </RelativeLayout>

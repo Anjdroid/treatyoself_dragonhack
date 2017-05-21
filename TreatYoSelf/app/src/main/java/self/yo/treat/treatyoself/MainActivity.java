@@ -12,6 +12,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     DBHelper db;
+    Varcevanje v2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
         // racunanje varcevanja
         db = new DBHelper(getApplicationContext());
 // racunanje varcevanja
+        float percent = (float) 0.1;
+        Prihranek p1 = new Prihranek(percent, 1);
+        long p2 = db.createPrihranek(p1);
         Prihranek p = db.getPrihranek(1);
         float d = p.getDenar();
         float od = p.getPrihranek();
@@ -35,20 +39,17 @@ public class MainActivity extends AppCompatActivity {
         float varcar = (sum / od) * d;
         Log.d("VARCAR", String.valueOf(varcar));
 
-/*Varcevanje v = db.getVarcevanje(1);
-v.setVrednost(varcar);*/
-
-        Varcevanje v2 = db.getVarcevanje(1);
-
-
+        Varcevanje v1 = new Varcevanje(1, 0);
+        long v3 = db.createVarcevanje(v1);
+        v2 = db.getVarcevanje(1);
         Log.d("VARCEVANJE", String.valueOf(v2.getVrednost()));
-
 
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(MainActivity.this, Spending.class);
+                intent.putExtra("sum", String.valueOf(v2.getVrednost()));
                 startActivity(intent);
             }
         }, 3000L);

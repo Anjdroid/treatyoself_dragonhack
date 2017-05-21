@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class Edit extends AppCompatActivity {
     DBHelper db;
@@ -22,6 +23,13 @@ public class Edit extends AppCompatActivity {
         db = new DBHelper(getApplicationContext());
         Intent intent = getIntent();
         id1 = intent.getStringExtra("id");
+        Racun r = db.getRacun(Integer.parseInt(id1));
+        EditText imee = (EditText) findViewById(R.id.editText3);
+        imee.setText(r.getIme());
+        EditText koll = (EditText) findViewById(R.id.editText4);
+        koll.setText(String.valueOf(r.getPlacilo()));
+        Spinner spin1 = (Spinner) findViewById(R.id.spinner);
+        spin1.setSelection(r.getIzdajatelj());
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

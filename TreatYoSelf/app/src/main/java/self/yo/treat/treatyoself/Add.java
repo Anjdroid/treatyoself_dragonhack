@@ -1,5 +1,6 @@
 package self.yo.treat.treatyoself;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,10 +36,11 @@ public class Add extends AppCompatActivity {
         spinner2.setAdapter(adapter3);
 
         DatePicker date = (DatePicker) findViewById(R.id.datePicker);
-        int day = date.getDayOfMonth();
-        int month = date.getMonth() + 1;
-        int year = date.getYear();
-        datum = Integer.toString(day)+"."+Integer.toString(month)+"."+Integer.toString(year);
+        int day1 = date.getDayOfMonth();
+        int month1 = date.getMonth() + 1;
+        int year1 = date.getYear();
+
+        datum = Integer.toString(day1)+"."+Integer.toString(month1)+"."+Integer.toString(year1);
 
         //save button
         Button addButton = (Button) findViewById(R.id.save2);
@@ -50,8 +52,14 @@ public class Add extends AppCompatActivity {
                 int kat = spin.getSelectedItemPosition();
                 Spinner spin2 = (Spinner) findViewById(R.id.spinner3);
                 String nacin = spin.getSelectedItem().toString();
-                Racun r = new Racun(db.getAllRacuni().size()+1, datum, ime, kat, null, kolicina, nacin);
+                Racun r = new Racun(db.getAllRacuni().size()+1, ime, datum, kat, null, kolicina, nacin);
                 long racun_id = db.createRacun(r);
+                Varcevanje vv = db.getVarcevanje(1);
+                Prihranek p = db.getPrihranek(1);
+                float d = p.getDenar();
+                float od = p.getPrihranek();
+                vv.setVrednost(vv.getVrednost() + (kolicina/od)*d);
+                long v2 = db.updateVarcevanje(vv);
                 Log.e(nacin, nacin);
                 Log.e(ime, ime);
 
@@ -59,5 +67,6 @@ public class Add extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

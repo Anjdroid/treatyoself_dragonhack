@@ -62,8 +62,8 @@ public class DBHelper extends SQLiteOpenHelper {
     // Table Create Statements
 // RACUN table create statement
     private static final String CREATE_TABLE_RACUN = "CREATE TABLE IF NOT EXISTS "
-            + TABLE_RACUN + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DATUM
-            + " TEXT," + KEY_IME + " TEXT," + KEY_IZDAJATELJ
+            + TABLE_RACUN + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_IME
+            + " TEXT," + KEY_DATUM + " TEXT," + KEY_IZDAJATELJ
             + " INTEGER," + KEY_NASLOV + " TEXT," + KEY_PLACILO + " REAL,"
             + KEY_NACIN_PLACILA + " TEXT" + ")";
 
@@ -118,6 +118,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_IME, racun.getIme());
         values.put(KEY_DATUM, racun.getDatum());
+
         // poisci id izdajatelja
         values.put(KEY_IZDAJATELJ, racun.getIzdajatelj());
         values.put(KEY_NASLOV, racun.getNaslov());
@@ -148,7 +149,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 Racun r = new Racun();
                 r.setId(c.getInt((c.getColumnIndex(KEY_ID))));
                 r.setIme((c.getString(c.getColumnIndex(KEY_IME))));
-                r.setDatumm(c.getString(c.getColumnIndex(KEY_DATUM)));
+                r.setDatum(c.getString(c.getColumnIndex(KEY_DATUM)));
                 r.setIzdajatelj(c.getInt((c.getColumnIndex(KEY_IZDAJATELJ))));
                 r.setNaslov((c.getString(c.getColumnIndex(KEY_NASLOV))));
                 r.setPlacilo(c.getFloat(c.getColumnIndex(KEY_PLACILO)));
@@ -179,7 +180,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Racun r = new Racun();
         r.setId(c.getInt(c.getColumnIndex(KEY_ID)));
         r.setIme((c.getString(c.getColumnIndex(KEY_IME))));
-        r.setDatumm(c.getString(c.getColumnIndex(KEY_DATUM)));
+        r.setDatum(c.getString(c.getColumnIndex(KEY_DATUM)));
         r.setIzdajatelj((c.getInt(c.getColumnIndex(KEY_IZDAJATELJ))));
         r.setNaslov(c.getString(c.getColumnIndex(KEY_NASLOV)));
         r.setPlacilo((c.getFloat(c.getColumnIndex(KEY_PLACILO))));
