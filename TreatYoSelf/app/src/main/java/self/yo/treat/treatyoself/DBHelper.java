@@ -22,7 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String LOG = "DatabaseHelper";
 
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     // Database Name
     private static final String DATABASE_NAME = "treatyoselfbase";
@@ -32,6 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TABLE_KATEGORIJA = "kategorija";
     private static final String TABLE_IZDAJATELJ = "izdajatelj";
     private static final String TABLE_PRIHRANEK = "prihranek";
+    private static final String TABLE_VARCEVANJE = "varcevanje";
 
     // Common column names
     private static final String KEY_ID = "id";
@@ -51,8 +52,15 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_DENAR = "denar";
     private static final String KEY_PRIHRANEK = "prihranek";
 
+    // VARCEVANJE
+    private static final String KEY_VREDNOST = "vrednost";
+
+    private static final String CREATE_TABLE_VARCEVANJE = "CREATE TABLE IF NOT EXISTS "
+            + TABLE_VARCEVANJE + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_VREDNOST
+            + " REAL" + ")";
+
     // Table Create Statements
-    // RACUN table create statement
+// RACUN table create statement
     private static final String CREATE_TABLE_RACUN = "CREATE TABLE IF NOT EXISTS "
             + TABLE_RACUN + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DATUM
             + " TEXT," + KEY_IME + " TEXT," + KEY_IZDAJATELJ
@@ -84,6 +92,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_KATEGORIJA);
         db.execSQL(CREATE_TABLE_IZDAJATELJ);
         db.execSQL(CREATE_TABLE_PRIHRANEK);
+        db.execSQL(CREATE_TABLE_VARCEVANJE);
     }
 
     @Override
@@ -93,6 +102,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_IZDAJATELJ);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRIHRANEK);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_KATEGORIJA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_VARCEVANJE);
 
         // create new tables
         onCreate(db);
@@ -104,9 +114,10 @@ public class DBHelper extends SQLiteOpenHelper {
     public long createRacun(Racun racun) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+        ////////// ime in datum zamenjano
         ContentValues values = new ContentValues();
-        values.put(KEY_DATUM, racun.getDatum());
         values.put(KEY_IME, racun.getIme());
+        values.put(KEY_DATUM, racun.getDatum());
         // poisci id izdajatelja
         values.put(KEY_IZDAJATELJ, racun.getIzdajatelj());
         values.put(KEY_NASLOV, racun.getNaslov());
@@ -151,18 +162,45 @@ public class DBHelper extends SQLiteOpenHelper {
         return racuni;
     }
 
+    // get 1 racun
+    public Racun getRacun(long racun_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_RACUN + " WHERE "
+                + KEY_ID + " = " + racun_id;
+
+        Log.e(LOG, selectQuery);
+
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c != null)
+            c.moveToFirst();
+
+        Racun r = new Racun();
+        r.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+        r.setIme((c.getString(c.getColumnIndex(KEY_IME))));
+        r.setDatumm(c.getString(c.getColumnIndex(KEY_DATUM)));
+        r.setIzdajatelj((c.getInt(c.getColumnIndex(KEY_IZDAJATELJ))));
+        r.setNaslov(c.getString(c.getColumnIndex(KEY_NASLOV)));
+        r.setPlacilo((c.getFloat(c.getColumnIndex(KEY_PLACILO))));
+        r.setNacinPlacila(c.getString(c.getColumnIndex(KEY_NACIN_PLACILA)));
+
+        return r;
+    }
+
     // posodobi racun
-    public long updateRacun(Racun racun) {
+    public int updateRacun(Racun r) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_IME, racun.getIme());
-        values.put(KEY_PLACILO, racun.getPlacilo());
+        values.put(KEY_IME, r.getIme());
+        values.put(KEY_PLACILO, r.getPlacilo());
+        values.put(KEY_IZDAJATELJ, r.getIzdajatelj());
         // TODO glede na kategorijo je potrebno posodobiti izdajatelja
 
         // updating row
         return db.update(TABLE_RACUN, values, KEY_ID + " = ?",
-                new String[] { String.valueOf(racun.getId()) });
+                new String[] { String.valueOf(r.getId()) });
     }
 
     // update prihranek
@@ -226,6 +264,77 @@ public class DBHelper extends SQLiteOpenHelper {
             db.close();
     }
 
+    ////////////////
+    // create kategorija
+    public long createKategorija(Kategorija kategorija) {
+        SQLiteDatabase db = this.getWritableDatabase();
 
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, kategorija.getId());
+        values.put(KEY_IME, kategorija.getIme());
 
+        // insert row
+        long kategorija_id = db.insert(TABLE_KATEGORIJA, null, values);
+
+        return kategorija_id;
+    }
+
+    // create izdajatelj
+    public long createIzdajatelj(Izdajatelj izdajatelj) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, izdajatelj.getId());
+        values.put(KEY_IME, izdajatelj.getIme());
+        values.put(KEY_KATEGORIJA, izdajatelj.getKategorija());
+
+        // insert row
+        long izdajatelj_id = db.insert(TABLE_IZDAJATELJ, null, values);
+
+        return izdajatelj_id;
+    }
+    ////////////////////////
+
+    public long createVarcevanje(Varcevanje varcevanje) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_VREDNOST, varcevanje.getVrednost());
+
+        // insert row
+        long varcevanje_id = db.insert(TABLE_VARCEVANJE, null, values);
+
+        return varcevanje_id;
+    }
+
+    public int updateVarcevanje(Varcevanje v) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_VREDNOST, v.getVrednost());
+
+        // updating row
+        return db.update(TABLE_VARCEVANJE, values, KEY_ID + " = ?",
+                new String[] { String.valueOf(v.getId()) });
+    }
+
+    public Varcevanje getVarcevanje(int varcevanje_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_VARCEVANJE + " WHERE "
+                + KEY_ID + " = " + varcevanje_id;
+
+        Log.e(LOG, selectQuery);
+
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c != null)
+            c.moveToFirst();
+
+        Varcevanje p = new Varcevanje();
+        p.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+        p.setVrednost((c.getFloat(c.getColumnIndex(KEY_VREDNOST))));
+
+        return p;
+    }
 }
