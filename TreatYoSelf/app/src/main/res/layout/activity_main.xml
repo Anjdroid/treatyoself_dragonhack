@@ -28,10 +28,10 @@
     <ImageView
         android:layout_width="200sp"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/pic"
+        app:srcCompat="@drawable/treat"
         android:id="@+id/imageView"
+        android:layout_marginTop="97dp"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

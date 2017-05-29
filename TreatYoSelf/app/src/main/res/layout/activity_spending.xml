@@ -28,17 +28,6 @@
         android:fontFamily="casual"
         android:textStyle="bold" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:id="@+id/exp2"
-        android:layout_below="@+id/title1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"
-        android:clickable="true"
-        android:layout_height="280sp">
-    </RelativeLayout>
-
     <Button
         android:id="@+id/scan"
 
@@ -51,35 +40,6 @@
         android:layout_marginBottom="13dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="40dp"
-        android:background="@drawable/buttonshape3"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/unnamed"
-        android:id="@+id/set"
-        android:adjustViewBounds="true"
-        android:padding="7dp"
-        android:scaleType="fitCenter"
-        android:layout_alignBottom="@+id/scan"
-        android:layout_alignRight="@+id/title1"
-        android:layout_alignEnd="@+id/title1"
-        android:layout_marginRight="32dp"
-        android:layout_marginEnd="32dp" />
-
-    <Button
-        android:id="@+id/add"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        android:background="@drawable/buttonshape"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/scan"
-        android:layout_alignLeft="@+id/title1"
-        android:layout_alignStart="@+id/title1"
-        android:layout_marginLeft="29dp"
-        android:layout_marginStart="29dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -138,5 +98,43 @@
             android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp" />
 
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/add"
+        android:text="+"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:background="@drawable/buttonshape"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/scan"
+        android:layout_toLeftOf="@+id/scan"
+        android:layout_toStartOf="@+id/scan"
+        android:layout_marginRight="21dp"
+        android:layout_marginEnd="21dp" />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:background="@drawable/buttonshape3"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/unnamed"
+        android:id="@+id/set"
+        android:adjustViewBounds="true"
+        android:padding="7dp"
+        android:scaleType="fitCenter"
+        android:layout_alignBottom="@+id/scan"
+        android:layout_alignRight="@+id/title1"
+        android:layout_alignEnd="@+id/title1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/exp2"
+        android:layout_marginTop="22dp"
+        android:clickable="true"
+        android:layout_height="280sp"
+        android:layout_below="@+id/title1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
     </RelativeLayout>
 </RelativeLayout>
